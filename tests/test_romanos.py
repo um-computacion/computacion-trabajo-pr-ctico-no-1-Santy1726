@@ -1,7 +1,6 @@
 import unittest
 from src.convertir_romano import convertir_a_romano 
 
-
 class PruebasConversionRomana(unittest.TestCase):
 
     def test_numeros_unidades(self):
@@ -22,6 +21,18 @@ class PruebasConversionRomana(unittest.TestCase):
         self.assertEqual(convertir_a_romano(3210), "MMMCCX")
         self.assertEqual(convertir_a_romano(3999), "MMMCMXCIX")
     
+    def test_valores_invalidos(self):
+        with self.assertRaises(ValueError):
+            convertir_a_romano(0)
+        with self.assertRaises(ValueError):
+            convertir_a_romano(-1)
+        with self.assertRaises(ValueError):
+            convertir_a_romano(4000)
+        with self.assertRaises(ValueError):
+            convertir_a_romano("texto")
+        with self.assertRaises(ValueError):
+            convertir_a_romano(3.14)
+            
 if __name__ == '__main__':
 
     unittest.main()
